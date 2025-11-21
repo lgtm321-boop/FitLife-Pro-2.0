@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitLifePro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            colors: {
+              primary: "#00C896", // Verde FitLifePro (Energético)
+              secondary: "#FFFFFF", // Branco Puro (Texto Principal)
+              accent: "#0E1E2E", // Fundo Escuro Profundo (Baseado na imagem)
+              surface: "#152238", // Fundo Cards (Ligeiramente mais claro que o fundo)
+              muted: "#94A3B8", // Texto Secundário (Slate 400)
+              input: "#1F2E44", // Campos de input (Azul escuro acinzentado)
+              dark: "#020617"
+            },
+            boxShadow: {
+              'soft': '0 4px 20px -2px rgba(0, 0, 0, 0.5)', // Sombra profunda
+              'glow': '0 0 25px rgba(0, 200, 150, 0.25)' // Brilho verde mais intenso
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out',
+              'slide-up': 'slideUp 0.5s ease-out',
+              'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      @media print {
+        @page { margin: 0.5cm; size: auto; }
+        
+        /* Forçar Reset Global para Branco no Papel */
+        html, body { 
+          background-color: #ffffff !important;
+          background-image: none !important;
+          color: #000000 !important;
+          -webkit-print-color-adjust: exact !important; 
+          print-color-adjust: exact !important;
+          height: auto !important;
+          overflow: visible !important;
+        }
+
+        /* Esconder elementos de navegação e MODAIS na impressão */
+        .no-print, header, nav, button, .toast-container, .modal-overlay { display: none !important; }
+        
+        /* Mostrar apenas conteúdo relevante */
+        .print-only { display: block !important; }
+        
+        /* Resetar cores dos Containers (Tailwind Overrides) */
+        .bg-surface, .bg-input, .bg-primary, .bg-accent, .bg-dark {
+           background-color: #ffffff !important;
+           color: #000000 !important;
+           border: 1px solid #e5e7eb !important; /* Borda cinza clara */
+           box-shadow: none !important;
+           background-image: none !important;
+        }
+
+        /* Forçar textos para preto */
+        h1, h2, h3, h4, h5, p, span, div, li, td, th {
+          color: #000000 !important;
+          text-shadow: none !important;
+        }
+        
+        /* Garantir visibilidade de tabelas e listas */
+        table, tr, td, th {
+          border-color: #000000 !important;
+        }
+        
+        /* Forçar quebras de página limpas */
+        .page-break { page-break-before: always; }
+        .avoid-break { page-break-inside: avoid; }
+      }
+
+      /* Smooth transitions */
+      * {
+        transition-property: background-color, border-color, color, fill, stroke, transform;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 200ms;
+      }
+      body {
+        background-color: #0E1E2E; /* Fallback color */
+      }
+      /* Custom Scrollbar for Dark Mode */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #0E1E2E; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1F2E44; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00C896; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.4.1"
+  }
+}
+</script>
+</head>
+  <body class="bg-accent text-secondary font-sans antialiased selection:bg-primary selection:text-white overflow-x-hidden">
+    <div id="root"></div>
+  </body>
+</html>
